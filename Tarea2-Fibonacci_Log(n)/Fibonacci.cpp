@@ -13,10 +13,10 @@ private:
 
 public:
     Fibonacci();
-    T fib_recursivo(T a); // Fibonacci recursivo - exponencial
-    T fib_iterativo(T num); // Fibonacci iterativo
-    T fib_lineal(T n); // Fibonacci lineal con array
-    void prTMatrix(T** A, T filas, T columnas); // Funcion para imprimir una matriz
+    T fib_exponencial(T a); // Fibonacci recursivo - exponencial
+    T fib_lineal(T num); // Fibonacci lineal iterativo
+    T fib_lineal_array(T n); // Fibonacci lineal iterativo con array
+    void printMatrix(T** A, T filas, T columnas); // Funcion para imprimir una matriz
     void mult(T** A, T** B); // Funcion que multiplica 2 matrices y el resultado se almacena en A
     void pow(T** A, T n); // Funcion que eleva a la potencia a la matriz A
     T fib_logaritmico(T n); // Fibonacci logaritmico
@@ -43,16 +43,16 @@ Fibonacci<T>::Fibonacci() // Constructor
 }
 
 template <typename T>
-T Fibonacci<T>::fib_recursivo(T a) // Fibonacci recursivo - exponencial
+T Fibonacci<T>::fib_exponencial(T a) // Fibonacci recursivo - exponencial
 {
     if (a == 1 || a == 0)
         return 1;
     else
-        return fib_recursivo(a - 1) + fib_recursivo(a - 2); 
+        return fib_exponencial(a - 1) + fib_exponencial(a - 2); 
 }
 
 template <typename T>
-T Fibonacci<T>::fib_iterativo(T num) // Fibonacci iterativo
+T Fibonacci<T>::fib_lineal(T num) // Fibonacci lineal iterativo
 {
     T a = 0;
     T b = 1;
@@ -67,7 +67,7 @@ T Fibonacci<T>::fib_iterativo(T num) // Fibonacci iterativo
 }
 
 template <typename T>
-T Fibonacci<T>::fib_lineal(T n) // Fibonacci lineal con array
+T Fibonacci<T>::fib_lineal_array(T n) // Fibonacci lineal iterativo con array
 {
     T base[] = { 0,1 };
     for (T i = 2; i <= n+1; ++i)
@@ -80,7 +80,7 @@ T Fibonacci<T>::fib_lineal(T n) // Fibonacci lineal con array
 }
 
 template <typename T>
-void Fibonacci<T>::prTMatrix(T** M, T filas, T columnas) // Funcion para imprimir una matriz
+void Fibonacci<T>::printMatrix(T** M, T filas, T columnas) // Funcion para imprimir una matriz
 {
     for (T i = 0; i < filas; i++)
     {
@@ -128,9 +128,9 @@ T Fibonacci<T>::fib_logaritmico(T n) // Fibonacci logaritmico
 int main() {
     Fibonacci<int> fib;
     int n = 6;
-    cout << "Exponencial(Recursivo) - Fibonacci de: " << n << " es: " << fib.fib_recursivo(n) << endl;
-    cout << "Lineal(Iterativo) - Fibonacci de: " << n << " es: " << fib.fib_iterativo(n) << endl;
-    cout << "Lineal(Iterativo con array) - Fibonacci de: " << n << " es: " << fib.fib_lineal(n) << endl;
+    cout << "Exponencial(Recursivo) - Fibonacci de: " << n << " es: " << fib.fib_exponencial(n) << endl;
+    cout << "Lineal(Iterativo) - Fibonacci de: " << n << " es: " << fib.fib_lineal(n) << endl;
+    cout << "Lineal(Iterativo con array) - Fibonacci de: " << n << " es: " << fib.fib_lineal_array(n) << endl;
     cout << "Logaritmico - Fibonacci de: " << n << " es: " << fib.fib_logaritmico(n) << endl;
 
     return 0;
