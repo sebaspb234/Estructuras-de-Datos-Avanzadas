@@ -7,7 +7,7 @@ class Fibonacci
 {
 
 private:
-    T** A = new T* [2]; // Matriz que se usar· para el Fibonacci logaritmico
+    T** A = new T* [2]; // Matriz que se usar√° para el Fibonacci logaritmico
     T** aux = new T* [2]; // Matriz auxiliar para obtener la potencia de A
 
 
@@ -128,9 +128,9 @@ T Fibonacci<T>::fib_logaritmico(T n) // Fibonacci logaritmico
 int main() {
     Fibonacci<int> fib;
     int n = 6;
-    cout << "Recursivo - Fibonacci de: " << n << " es: " << fib.fib_recursivo(n) << endl;
-    cout << "Iterativo - Fibonacci de: " << n << " es: " << fib.fib_iterativo(n) << endl;
-    cout << "Lineal - Fibonacci de: " << n << " es: " << fib.fib_lineal(n) << endl;
+    cout << "Exponencial(Recursivo) - Fibonacci de: " << n << " es: " << fib.fib_recursivo(n) << endl;
+    cout << "Lineal(Iterativo) - Fibonacci de: " << n << " es: " << fib.fib_iterativo(n) << endl;
+    cout << "Lineal(Iterativo con array) - Fibonacci de: " << n << " es: " << fib.fib_lineal(n) << endl;
     cout << "Logaritmico - Fibonacci de: " << n << " es: " << fib.fib_logaritmico(n) << endl;
 
     return 0;
