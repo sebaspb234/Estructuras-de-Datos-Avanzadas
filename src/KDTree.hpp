@@ -123,7 +123,7 @@ bool KDTree<N, ElemType>::find(const Point<N>& pt, KDTreeNode<N, ElemType>**& p)
    
     int cont = 0;
     for (p = &root; (*p) && (*p)->point != pt; p = &((*p)->nodes[pt[cont % N] > (*p)->point[cont % N]]), cont++); // Si la coordenada actual es menor al punto, va a la derecha
-    return *p != nullptr; // si (*p) lo encontró,  devuelve 1
+    return *p != nullptr; // si (*p) lo encontrÃ³,  devuelve 1
 }
 
 template <size_t N, typename ElemType>
@@ -132,7 +132,7 @@ bool KDTree<N, ElemType>::contains(const Point<N> &pt) const {
     KDTreeNode<N, ElemType>** p;
     int cont = 0;
     for (p = &root; (*p) && (*p)->point != pt; p = &((*p)->nodes[pt[cont % N] > (*p)->point[cont % N]]), cont++); // Si la coordenada actual es menor al punto, va a la derecha
-    return *p != nullptr; // si (*p) lo encontró,  devuelve 1
+    return *p != nullptr; // si (*p) lo encontrÃ³,  devuelve 1
 
 
 }
@@ -145,7 +145,7 @@ void KDTree<N, ElemType>::insert(const Point<N> &pt, const ElemType &value) {
   for (p = &root; (*p) && (*p)->point != pt; p = &((*p)->nodes[pt[cont % N] > (*p)->point[cont % N]]), cont++);
   if (!(*p))
   {
-      *p = new KDTreeNode<N, ElemType>(pt, value); // Si no está el punto, lo añade y size aumenta en uno.
+      *p = new KDTreeNode<N, ElemType>(pt, value); // Si no estÃ¡ el punto, lo aÃ±ade y size aumenta en uno.
       size_++; 
   }
   else // Si el punto ya existe en el KD-Tree, su valor es sobreescrito
@@ -162,7 +162,7 @@ ElemType &KDTree<N, ElemType>::operator[](const Point<N> &pt) {
     if (!(*p)) // Si el punto no existe, se crea un nodo con el valor por defecto de ElemType
     {
         ElemType element = ElemType(); // Valor por defecto del tipo ElemType
-        *p = new KDTreeNode<N, ElemType>(pt, element); // Si no está el punto, lo añade y size aumenta en uno.
+        *p = new KDTreeNode<N, ElemType>(pt, element); // Si no estÃ¡ el punto, lo aÃ±ade y size aumenta en uno.
         size_++;
     }
     return (*p)->value; //Retorna una referencia al valor asociado
@@ -173,7 +173,7 @@ ElemType &KDTree<N, ElemType>::at(const Point<N> &pt) {
     KDTreeNode<N, ElemType>** p;
     int cont = 0;
     for (p = &root; (*p) && (*p)->point != pt; p = &((*p)->nodes[pt[cont % N] > (*p)->point[cont % N]]), cont++);
-    if (!(*p)) // Si no encuentra el punto, lanza una excepción de fuera de rango
+    if (!(*p)) // Si no encuentra el punto, lanza una excepciÃ³n de fuera de rango
     {
         throw out_of_range(" Estas fuera del rango. ");
     }
@@ -186,7 +186,7 @@ const ElemType &KDTree<N, ElemType>::at(const Point<N> &pt) const {
     KDTreeNode<N, ElemType>** p;
     int cont = 0;
     for (p = &root; (*p) && (*p)->point != pt; p = &((*p)->nodes[pt[cont % N] > (*p)->point[cont % N]]), cont++);
-    if (!(*p)) // Si no encuentra el punto, lanza una excepción de fuera de rango
+    if (!(*p)) // Si no encuentra el punto, lanza una excepciÃ³n de fuera de rango
     {
         throw out_of_range(" Estas fuera del rango. ");
     }
@@ -198,6 +198,10 @@ const ElemType &KDTree<N, ElemType>::at(const Point<N> &pt) const {
 template <size_t N, typename ElemType>
 void KDTree<N, ElemType>::neighbors(const Point<N> key, KDTreeNode<N, ElemType>* current_node, vector<ElemType>& nearest_neighbors_candidates, int depth) const
 {
+    if (!current_node)
+    {
+        return;
+    }
 
 }
 
